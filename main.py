@@ -1,9 +1,9 @@
 def show_menu():
-    print("n====== student management system ======")
+    print("\n====== student management system ======")
     print("1. Add Student")
     print("2. View All Students")
     print("3. Search Student")
-    print("2. Delete student")
+    print("4. Delete student")
     print("5. Save & Exit")
 
 students = []
@@ -38,9 +38,36 @@ def view_students():
 
 def search_student():
     roll_to_search = input("Enter the roll number to search: ")
+    found = False
+
+    for student in students:
+        if student['roll'] == roll_to_search:
+            print("\nStudent Found: ")
+            print(f"Name: {student['name']}, Roll: {student['roll']}, Class: {student['class']}")
+            found = True
+            break
+    if not found:
+        print("Student not found with that roll number.")
+            
+            
+# function to delete a student
+
+def delete_student():
+    roll_to_delete = input("Enter the roll number to delete: ")
+    found = False
     
+    for student in students:
+        if student['roll'] == roll_to_delete:
+            students.remove(student)
+            print("Student deleted successfully.")
+            found = True
+            break
+    if not found:
+        print("No student found with that roll number to delete,")
+       
             
-            
+    
+# main function to run the program
             
 def main():
     while True:
@@ -52,15 +79,14 @@ def main():
         elif choice == '2':
             view_students()
         elif choice == '3':
-            pass
+            search_student()
         elif choice == '4':
-            pass
+            delete_student()
         elif choice == '5':
             break
         else:
             print("Invalid choice, please try again.")
-            
-main()
+    main()
 
 
             
