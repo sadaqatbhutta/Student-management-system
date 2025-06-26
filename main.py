@@ -7,6 +7,9 @@ def show_menu():
     print("3. Search Student")
     print("4. Delete Student")
     print("5. Save & Exit")
+    
+
+# Function to add a new student
 
 def add_student():
     name = input("Enter student name: ")
@@ -21,6 +24,9 @@ def add_student():
 
     students.append(student)
     print("✅ Student added successfully!")
+    
+    
+# Function to view all students
 
 def view_students():
     if not students:
@@ -29,6 +35,8 @@ def view_students():
         print("\n--- Student List ---")
         for i, student in enumerate(students, start=1):
             print(f"{i}. Name: {student['name']}, Roll: {student['roll']}, Class: {student['class']}")
+
+# Function to search a student by roll number
 
 def search_student():
     roll_to_search = input("Enter roll number to search: ")
@@ -43,6 +51,10 @@ def search_student():
 
     if not found:
         print("❌ No student found with that roll number.")
+        
+        
+        
+# Function to delete a student by roll number
 
 def delete_student():
     roll_to_delete = input("Enter roll number to delete: ")
@@ -57,6 +69,20 @@ def delete_student():
 
     if not found:
         print("❌ No student found with that roll number.")
+        
+        
+        
+# Function to save students to a JSON file
+
+import json
+def save_students():
+    with open("students.json", "w") as file:
+        json.dump(students, file, indent=4)
+        print("students saved to 'students.json'.")
+        
+        
+
+# Main function to run the program
 
 def main():
     while True:
@@ -72,7 +98,8 @@ def main():
         elif choice == '4':
             delete_student()
         elif choice == '5':
-            print("📁 Exiting program...")
+            save_students()
+            print("📁 Exiting program and saving students...")
             break
         else:
             print("Invalid choice. Try again.")
