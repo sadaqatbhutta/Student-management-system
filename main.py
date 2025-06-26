@@ -1,4 +1,7 @@
+
+
 students = []
+import json
 
 def show_menu():
     print("\n====== Student Management System ======")
@@ -70,15 +73,19 @@ def delete_student():
     if not found:
         print("❌ No student found with that roll number.")
         
-        
-        
 # Function to save students to a JSON file
 
-import json
-def save_students():
-    with open("students.json", "w") as file:
-        json.dump(students, file, indent=4)
-        print("students saved to 'students.json'.")
+
+
+def load_students():
+    try:
+        with open("students.json", "r") as file:
+            return json.load(file)
+    except FileNotFoundError:
+        return []
+
+students = load_students()
+
         
         
 
@@ -98,7 +105,7 @@ def main():
         elif choice == '4':
             delete_student()
         elif choice == '5':
-            save_students()
+            load_students()
             print("📁 Exiting program and saving students...")
             break
         else:
