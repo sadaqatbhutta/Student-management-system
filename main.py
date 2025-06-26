@@ -7,25 +7,8 @@ def show_menu():
     print("5. Save & Exit")
 
 students = []
-def main():
-    while True:
-        show_menu()
-        choice = input("Enter your choice: ")
-        
-        if choice == '1':
-            add_student()
-        elif choice == '2':
-            pass
-        elif choice == '3':
-            pass
-        elif choice == '4':
-            pass
-        elif choice == '5':
-            break
-        else:
-            print("Invalid choice, please try again.")
-            
-main()
+
+# adding students
 
 def add_student():
     name = input("Enter student name: ")
@@ -39,4 +22,46 @@ def add_student():
     }
     students.append(student)
     print(f"Student {name} added successfully.")
+    
+# funtion to view all students
+    
+def view_students():
+    if not students:
+        print("No students found. ")
+    else:
+        print("\n======= List of Students ======")
+        
+        for i, student in enumerate(students, start=1):
+            print(f"{i}. Name: {student['name']}, Roll: {student['roll']}, Class: {student['class']}")
+            
+# function to search for a student
+
+def search_student():
+    roll_to_search = input("Enter the roll number to search: ")
+    
+            
+            
+            
+def main():
+    while True:
+        show_menu()
+        choice = input("Enter your choice: ")
+        
+        if choice == '1':
+            add_student()
+        elif choice == '2':
+            view_students()
+        elif choice == '3':
+            pass
+        elif choice == '4':
+            pass
+        elif choice == '5':
+            break
+        else:
+            print("Invalid choice, please try again.")
+            
+main()
+
+
+            
     
